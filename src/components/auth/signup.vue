@@ -105,7 +105,11 @@ import axios from '../../axios-auth';
           terms: this.terms
         }
         console.log(formData)
-        axios.post('/users.json', formData)
+        axios.post('/accounts:signUp?key=AIzaSyCiRbhYIrhfMKF--K6fzSbNW4cpvmN_EBw', {
+            email : formData.email,
+            password: formData.password,
+            returnSecureToken: true
+        })
         .then(res => console.log(res))
         .catch(err => console.log(err))
       }
