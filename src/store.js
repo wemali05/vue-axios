@@ -30,7 +30,7 @@ export default new Vuex.Store({
     setLogoutTimer({commit}, expirationTime) {
         setInterval(()=> {
             commit('clearAuthData')
-        },expirationTime )
+        },expirationTime * 1000)
     }, 
     signup({commit, dispatch}, authData){
             axios.post('/accounts:signUp?key=AIzaSyCiRbhYIrhfMKF--K6fzSbNW4cpvmN_EBw', {
