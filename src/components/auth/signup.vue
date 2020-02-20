@@ -105,7 +105,7 @@ import axios from 'axios'
           terms: this.terms
         }
         console.log(formData)
-        axios.post('https://vue-palylist-e6df4.firebaseio.com/users.json', formData)
+        axios.post('/users.json', formData)
         .then(res => console.log(res))
         .catch(err => console.log(err))
       }

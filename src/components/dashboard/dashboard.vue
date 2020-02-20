@@ -15,7 +15,7 @@ export default {
         }
     },
     created(){
-        axios.get('https://vue-palylist-e6df4.firebaseio.com/users.json')
+        axios.get('/users.json')
         .then(res => {
         console.log(res)
         const data = res.data;
