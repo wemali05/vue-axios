@@ -2,33 +2,20 @@
   <div id="dashboard">
     <h1>That's the dashboard!</h1>
     <p>You should only get here if you're authenticated!</p>
-    <p>User email Address: {{ email }}</p>
+    <p v-if="email">User email Address: {{ email }}</p>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 export default {
-    data() {
-        return {
-            email:''
+    computed: {
+       email(){
+            return !this.$store.getters.user ? false : this.$store.getters.user.email
         }
     },
     created(){
-        axios.get('/users.json')
-        .then(res => {
-        console.log(res)
-        const data = res.data;
-        const users = [];
-        for(let key in data) {
-            const user = data[key];
-            user.id = key;
-            users.push(user)
-        }
-        console.log(users);
-        this.email = users[0].email;
-        })
-        .catch(err =>console.log(err))
+       this.$store.dispatch('fetchUser')
     }
 }
 </script>
